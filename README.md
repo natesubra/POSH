@@ -1,2 +1,2 @@
 # POSH
-Random enterprise-ready scripts
+Random (mostly)enterprise-ready scripts
