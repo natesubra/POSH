@@ -32,10 +32,14 @@ https://technet.microsoft.com/en-us/library/ff730940.aspx
 #>
         Param(
         [Parameter(mandatory=$true)][string]$Computername,
-        [Parameter(mandatory=$true)][string][validateset("Microsoft-Windows-AppLocker/EXE and DLL","ForwardedEvents")]$Logname
+        [Parameter(mandatory=$true)][string][validateset("Microsoft-Windows-AppLocker/EXE and DLL","Microsoft-Windows-AppLocker/MSI and Script","ForwardedEvents")]$Logname
         )
- 
-    Get-WinEvent -computername $ComputerName -logname $Logname | % {
+    
+    $filter = {($_.TimeCreated -ge $polltime) -and ($_.TimeCreated -le $currenttime)}
+    $currenttime = (get-date)
+    $polltime = $currenttime.AddMinutes(-5)
+
+    Get-WinEvent -computername $ComputerName -logname $Logname | Where $filter | % {
        
         #Get the XML for this event.
         $XML = [xml]$_.ToXml()
