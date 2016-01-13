@@ -19,6 +19,8 @@ Get-Applocker-Events -computername targetmachine -logname "Microsoft-Windows-App
 Get-AppLockerEvents -Computername evlserver -Logname ForwardedEvents | export-csv -NoTypeInformation -Path $env:userprofile\desktop\applockerevents.csv
 
 .Link
+https://github.com/natesubra/POSH
+References:
 http://blogs.technet.com/b/ashleymcglone/archive/2013/08/28/powershell-get-winevent-xml-madness-getting-details-from-event-logs.aspx
 https://social.technet.microsoft.com/Forums/windows/en-US/6b9476fa-66b8-4da9-bee2-6dcc0907c157/applocker-remote-reporting?forum=winserverpowershell
 http://poshcode.org/5494
