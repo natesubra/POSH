@@ -38,6 +38,7 @@ https://technet.microsoft.com/en-us/library/ff730940.aspx
     $filter = {($_.TimeCreated -ge $polltime) -and ($_.TimeCreated -le $currenttime)}
     $currenttime = (get-date)
     $polltime = $currenttime.AddMinutes(-5)
+    #TODO - If started from scheduled task, use that start time as input window
 
     Get-WinEvent -computername $ComputerName -logname $Logname | Where $filter | % {
        
@@ -56,6 +57,5 @@ https://technet.microsoft.com/en-us/library/ff730940.aspx
             @{ Name = "FileHash"; Expression = {$XML.Event.UserData.RuleAndFileData.FileHash}},
             @{ Name = "Fqbn";     Expression = {$XML.Event.UserData.RuleAndFileData.Fqbn}},
             Message
-
-    }
+            }
 }
