@@ -5,7 +5,7 @@ function Check-WebContent {
 <#
 
 .Synopsis
-Using the the WUG Service account, initiate an HTTP(s) connection and evaluate retrieved content against certain parameters
+Initiate an HTTP(s) connection and evaluate retrieved content against certain parameters
 
 .Description
 Using the invoke-webrequest cmdlet (requires POSH 3+), grabs the page response and checks for the content and or the statuscode response
@@ -30,7 +30,7 @@ Check-WebContent -URL www.google.com -ExpectedResponseCode 200 -ExpectedContentS
 
 .Link
 Code repository for this cmdlet
-https://github.com/natesubra/POSH/WhatsUpGold
+https://github.com/natesubra/POSH
 
 #>
 
